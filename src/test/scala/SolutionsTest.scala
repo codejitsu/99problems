@@ -24,4 +24,9 @@ class SolutionsTest {
     assertEquals(0, lengthTailrec(List()))
     assertEquals(6, lengthTailrec(List(1, 1, 2, 3, 5, 8)))    
   }
+  
+  @Test def testP05() {
+	assertEquals(List(), reverse(List()))
+    assertEquals(List(8, 5, 3, 2, 1, 1), reverse(List(1, 1, 2, 3, 5, 8)))
+  }
 }

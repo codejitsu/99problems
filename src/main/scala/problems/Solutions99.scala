@@ -42,4 +42,15 @@ object Solutions99 {
     
     len(0, list)
   }
+  
+  //P05
+  def reverse(list: List[Int]): List[Int] = {
+    @tailrec
+    def rev(res: List[Int], ls: List[Int]): List[Int] = ls match {
+      case Nil => res
+      case x :: xs => rev(x :: res, xs)
+    }
+    
+    rev(List(), list)
+  }
 }
