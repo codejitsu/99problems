@@ -16,4 +16,12 @@ class SolutionsTest {
     assertEquals(1, nth(0, List(1, 1, 2, 3, 5, 8)))
     assertEquals(8, nth(5, List(1, 1, 2, 3, 5, 8)))
   }
+  
+  @Test def testP04() {
+    assertEquals(0, length(List()))
+    assertEquals(6, length(List(1, 1, 2, 3, 5, 8)))
+    
+    assertEquals(0, lengthTailrec(List()))
+    assertEquals(6, lengthTailrec(List(1, 1, 2, 3, 5, 8)))    
+  }
 }

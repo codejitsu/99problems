@@ -1,5 +1,7 @@
 package problems
 
+import scala.annotation.tailrec
+
 object Solutions99 {
   //P01
   def last(list: List[Int]): Int = list match {
@@ -22,5 +24,22 @@ object Solutions99 {
       case 0 => list.head
       case _ => nth(n - 1, list.tail)
     }
+  }
+  
+  //P04
+  def length(list: List[Int]): Int = list match {
+    case Nil => 0
+    case x :: xs => 1 + length(xs)
+  }
+  
+  //P04 tail recursive
+  def lengthTailrec(list: List[Int]): Int = {
+    @tailrec
+    def len(res: Int, ls: List[Int]): Int = ls match {
+      case Nil => res
+      case x :: xs => len(res + 1, xs) 
+    }
+    
+    len(0, list)
   }
 }
