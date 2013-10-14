@@ -53,4 +53,7 @@ object Solutions99 {
     
     rev(List(), list)
   }
+  
+  //P06
+  def isPalindrome(list: List[Int]): Boolean = list == reverse(list)
 }
