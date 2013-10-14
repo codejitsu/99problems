@@ -59,6 +59,7 @@ object Solutions99 {
   
   //P07
   def flatten(list: List[Any]): List[Any] = {
+    @tailrec
 	def concat[A](list1: List[A], list2: List[A]): List[A] = (list1, list2) match {
 	  case (Nil, Nil) => Nil
 	  case (x :: xs, Nil) => list1
