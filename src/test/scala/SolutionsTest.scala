@@ -10,4 +10,10 @@ class SolutionsTest {
   @Test def testP02() {
     assertEquals(5, penultimate(List(1, 1, 2, 3, 5, 8)))
   }
+  
+  @Test def testP03() {
+    assertEquals(2, nth(2, List(1, 1, 2, 3, 5, 8)))
+    assertEquals(1, nth(0, List(1, 1, 2, 3, 5, 8)))
+    assertEquals(8, nth(5, List(1, 1, 2, 3, 5, 8)))
+  }
 }
