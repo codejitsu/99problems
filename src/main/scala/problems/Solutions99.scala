@@ -44,9 +44,9 @@ object Solutions99 {
   }
   
   //P05
-  def reverse(list: List[Int]): List[Int] = {
+  def reverse[A](list: List[A]): List[A] = {
     @tailrec
-    def rev(res: List[Int], ls: List[Int]): List[Int] = ls match {
+    def rev(res: List[A], ls: List[A]): List[A] = ls match {
       case Nil => res
       case x :: xs => rev(x :: res, xs)
     }
@@ -56,4 +56,25 @@ object Solutions99 {
   
   //P06
   def isPalindrome(list: List[Int]): Boolean = list == reverse(list)
+  
+  //P07
+  def flatten(list: List[Any]): List[Any] = {
+	def concat[A](list1: List[A], list2: List[A]): List[A] = (list1, list2) match {
+	  case (Nil, Nil) => Nil
+	  case (x :: xs, Nil) => list1
+	  case (Nil, x :: xs) => list2
+	  case (ls, x :: xs) => concat(ls :+ x, xs)
+	}
+    
+    @tailrec
+    def flat(res: List[Any], ls: List[Any]): List[Any] = ls match {
+	  case Nil => res
+	  case x :: xs => x match {
+	    case l: List[Any] => flat(concat(res, flatten(l)), xs)
+	    case a: Any => flat(concat(res, List(x)), xs)
+	  }
+	}
+    
+    flat(List(), list)
+  }
 }

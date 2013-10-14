@@ -34,4 +34,8 @@ class SolutionsTest {
     assertTrue(isPalindrome(List()))
     assertTrue(isPalindrome(List(1, 2, 3, 2, 1)))
   }
+  
+  @Test def testP07() {
+    assertEquals(List(1, 1, 2, 3, 5, 8), flatten(List(List(1, 1), 2, List(3, List(5, 8)))))
+  }
 }
