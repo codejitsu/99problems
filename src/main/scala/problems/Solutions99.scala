@@ -78,4 +78,16 @@ object Solutions99 {
     
     flat(List(), list)
   }
+  
+  //P08
+  def compress(list: List[Symbol]): List[Symbol] = {
+    def comp(lst: List[Symbol], acc: List[Symbol]): List[Symbol] = lst match {
+      case Nil => acc
+      case x::Nil => acc :+ x
+      case x::y::xt if x == y => comp(y::xt, acc)
+      case x::y::xt => comp(y::xt, acc :+ x)
+    }
+    
+    comp(list, List())
+  }
 }
