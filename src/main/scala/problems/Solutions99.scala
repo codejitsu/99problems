@@ -81,6 +81,7 @@ object Solutions99 {
   
   //P08
   def compress(list: List[Symbol]): List[Symbol] = {
+    @tailrec
     def comp(lst: List[Symbol], acc: List[Symbol]): List[Symbol] = lst match {
       case Nil => acc
       case x::Nil => acc :+ x
