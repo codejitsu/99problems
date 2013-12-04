@@ -91,4 +91,20 @@ object Solutions99 {
     
     comp(list, List())
   }
+  
+  //P09
+  def pack(list: List[Symbol]): List[List[Symbol]] = {
+    @tailrec
+    def _pack(lst: List[Symbol], current: Symbol, acc: List[Symbol], 
+        res: List[List[Symbol]]): List[List[Symbol]] = lst match {
+      case Nil => res
+      case x::Nil if x == current => res :+ (acc :+ x)
+      case x::Nil if x != current => res :+ acc :+ List(x)
+      case x::xs if x == current => _pack(xs, current, acc :+ x, res)
+      case x::xs if x != current => _pack(xs, x, List(x), res :+ acc)
+    }
+    
+    if (list.isEmpty) Nil
+    else _pack(list.tail, list.head, List(list.head), List())
+  }
 }
