@@ -107,4 +107,11 @@ object Solutions99 {
     if (list.isEmpty) Nil
     else _pack(list.tail, list.head, List(list.head), List())
   }
+  
+  def pack2(list: List[Symbol]): List[List[Symbol]] = list match {
+    case Nil => Nil
+    case x::xs => {
+      list.takeWhile(_ == x) :: pack2(list.dropWhile(_ == x))
+    }
+  }
 }
