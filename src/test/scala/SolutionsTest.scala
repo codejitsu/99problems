@@ -70,4 +70,54 @@ class SolutionsTest {
     assertEquals(pack2(List('g, 'a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e, 'f)), 
         List(List('g), List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e), List('f)))
   }  
+  
+  @Test def testP10() {
+    assertEquals(List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)), 
+        encode(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+  }
+  
+  @Test def testP10_1() {
+    assertEquals(List((4,'a)), 
+        encode(List('a, 'a, 'a, 'a)))
+  }
+  
+  @Test def testP10_2() {
+    assertEquals(List(), 
+        encode(List()))
+  }
+  
+  @Test def testP10_3() {
+    assertEquals(List((1,'a), (1,'b), (1,'c), (1,'a), (1,'d), (1,'e)), 
+        encode(List('a, 'b, 'c, 'a, 'd, 'e)))
+  }  
+  
+  @Test def testP11() {
+    assertEquals(List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)), 
+        encodeModified(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+  }
+  
+  @Test def testP12() {
+    assertEquals(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e), 
+        decode(List((4, 'a), (1, 'b), (2, 'c), (2, 'a), (1, 'd), (4, 'e))))
+  }
+  
+  @Test def testP13() {
+    assertEquals(List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)), 
+        encodeDirect(List('a, 'a, 'a, 'a, 'b, 'c, 'c, 'a, 'a, 'd, 'e, 'e, 'e, 'e)))
+  }
+  
+  @Test def testP13_1() {
+    assertEquals(List((4,'a)), 
+        encodeDirect(List('a, 'a, 'a, 'a)))
+  }
+  
+  @Test def testP13_2() {
+    assertEquals(List(), 
+        encodeDirect(List()))
+  }
+  
+  @Test def testP13_3() {
+    assertEquals(List((1,'a), (1,'b), (1,'c), (1,'a), (1,'d), (1,'e)), 
+        encodeDirect(List('a, 'b, 'c, 'a, 'd, 'e)))
+  }    
 }

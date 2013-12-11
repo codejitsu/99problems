@@ -114,4 +114,53 @@ object Solutions99 {
       list.takeWhile(_ == x) :: pack2(list.dropWhile(_ == x))
     }
   }
+  
+  //P10
+  def encode(list: List[Symbol]): List[(Int, Symbol)] = pack(list) map (x => (x.length, x.head))
+  
+  def encode2(list: List[Symbol]): List[(Int, Symbol)] = {
+    @tailrec
+    def _enc(lst: List[List[Symbol]], acc: List[(Int, Symbol)]): List[(Int, Symbol)] = lst match {
+      case Nil => acc
+      case x::xs => _enc(xs, acc :+ (x.length, x.head))
+    }
+    
+    _enc(pack(list), Nil)
+  }
+  
+  //P11
+  def encodeModified(list: List[Symbol]): List[Any] = 
+    encode(list) map {
+     case x: (Int, Symbol) if x._1 > 1 => x
+     case x: (Int, Symbol) => x._2
+    }
+  
+  //P12
+  def decode(list: List[(Int, Symbol)]): List[Symbol] = list flatMap {x => List.fill(x._1)(x._2)}
+  
+  def decode2(list: List[(Int, Symbol)]): List[Symbol] = {
+    @tailrec
+    def repeat(n: Int, s: Symbol, acc: List[Symbol]): List[Symbol] = {
+      if (n == 0) acc
+      else repeat(n - 1, s, s :: acc)
+    }
+    
+    if (list.isEmpty) Nil
+    else {
+      repeat(list.head._1, list.head._2, List()) ::: decode2(list.tail)
+    }
+  }
+  
+  //P13
+  def encodeDirect(list: List[Symbol]): List[(Int, Symbol)] = {
+    @tailrec
+    def enc(list: List[Symbol], n: Int, s: Symbol, acc: List[(Int, Symbol)]): List[(Int, Symbol)] = list match {
+      case Nil => acc :+ (n, s)
+      case x::xs if x == s => enc(xs, n + 1, s, acc)
+      case x::xs if x != s => enc(xs, 1, x, acc :+ (n, s))
+    }
+    
+    if (list.isEmpty) Nil
+    else enc(list.tail, 1, list.head, List())
+  }
 }
