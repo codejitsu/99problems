@@ -163,4 +163,25 @@ object Solutions99 {
     if (list.isEmpty) Nil
     else enc(list.tail, 1, list.head, List())
   }
+  
+  //P14
+  def duplicate(list: List[Symbol]): List[Symbol] = list match {
+      case Nil => Nil
+      case x::xs => x::x::duplicate(xs)
+  }
+  
+  //P15
+  def duplicateN(n: Int, list: List[Symbol]): List[Symbol] = list flatMap (List.fill(n)(_))
+  
+  //P16
+  def drop(n: Int, list: List[Symbol]): List[Symbol] = {
+    @tailrec
+    def dr(lst: List[Symbol], current: Int, res: List[Symbol]): List[Symbol] = lst match {
+      case Nil => res
+      case x::xs if current < n => dr(xs, current + 1, res :+ x)
+      case x::xs => dr(xs, 1, res)
+    }
+    
+    dr(list, 1, List())
+  }
 }

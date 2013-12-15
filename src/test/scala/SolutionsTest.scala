@@ -120,4 +120,33 @@ class SolutionsTest {
     assertEquals(List((1,'a), (1,'b), (1,'c), (1,'a), (1,'d), (1,'e)), 
         encodeDirect(List('a, 'b, 'c, 'a, 'd, 'e)))
   }    
+  
+  @Test def testP14() {
+    assertEquals(List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd), duplicate(List('a, 'b, 'c, 'c, 'd)))
+  }
+  
+  @Test def testP15() {
+    assertEquals(List('a, 'a, 'a, 'b, 'b, 'b, 'c, 'c, 'c, 'c, 'c, 'c, 'd, 'd, 'd), 
+        duplicateN(3, List('a, 'b, 'c, 'c, 'd)))
+  }
+  
+  @Test def testP15_1() {
+    assertEquals(List('a, 'b, 'c, 'c, 'd), 
+        duplicateN(1, List('a, 'b, 'c, 'c, 'd)))
+  }  
+  
+  @Test def testP16() {
+    assertEquals(List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k), 
+        drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+  }
+  
+  @Test def testP16_1() {
+    assertEquals(List('a, 'c, 'e, 'g, 'i, 'k), 
+        drop(2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+  }
+  
+  @Test def testP16_2() {
+    assertEquals(List(), 
+        drop(1, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+  }    
 }
