@@ -184,4 +184,9 @@ object Solutions99 {
     
     dr(list, 1, List())
   }
+  
+  //P17
+  def split(n: Int, list: List[Symbol]): (List[Symbol], List[Symbol]) = (list.take(n), list.drop(n))
+  
+  def split2(n: Int, list: List[Symbol]): (List[Symbol], List[Symbol]) = list.splitAt(n)
 }
