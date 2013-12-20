@@ -189,4 +189,10 @@ object Solutions99 {
   def split(n: Int, list: List[Symbol]): (List[Symbol], List[Symbol]) = (list.take(n), list.drop(n))
   
   def split2(n: Int, list: List[Symbol]): (List[Symbol], List[Symbol]) = list.splitAt(n)
+  
+  //P18
+  def slice(from: Int, to: Int, list: List[Symbol]): List[Symbol] = 
+    list.zipWithIndex.dropWhile(_._2 < from).takeWhile(_._2 < to) map { case (x, i) => x}
+  
+  def slice2(from: Int, to: Int, list: List[Symbol]): List[Symbol] = list.slice(from, to)
 }

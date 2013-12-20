@@ -169,4 +169,9 @@ class SolutionsTest {
     assertEquals((List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k), List()),
         split(100, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
   }  
+  
+  @Test def testP18() {
+    assertEquals(List('d, 'e, 'f, 'g), 
+        slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+  }
 }
