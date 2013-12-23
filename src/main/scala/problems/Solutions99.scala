@@ -195,4 +195,12 @@ object Solutions99 {
     list.zipWithIndex.dropWhile(_._2 < from).takeWhile(_._2 < to) map { case (x, i) => x}
   
   def slice2(from: Int, to: Int, list: List[Symbol]): List[Symbol] = list.slice(from, to)
+  
+  //P19
+  @tailrec
+  def rotate(n: Int, list: List[Symbol]): List[Symbol] = n match {
+    case 0 => list
+    case x if x > 0 => rotate(n - 1, list.tail :+ list.head)
+    case x if x < 0 => rotate(n + 1, list.last :: list.take(list.length - 1))
+  }
 }
