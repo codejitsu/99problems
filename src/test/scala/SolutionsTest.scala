@@ -199,4 +199,16 @@ class SolutionsTest {
     assertEquals(List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i),
         rotate(-11, List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i)))
   }      
+  
+  @Test def testP20() {
+    assertEquals((List('a, 'c, 'd), Some('b)), removeAt(1, List('a, 'b, 'c, 'd)))
+  }
+  
+  @Test def testP20_1() {
+    assertEquals((List('a, 'b, 'c), Some('d)), removeAt(3, List('a, 'b, 'c, 'd)))
+  }
+  
+  @Test def testP20_2() {
+    assertEquals((List('b, 'c, 'd), Some('a)), removeAt(0, List('a, 'b, 'c, 'd)))
+  }   
 }

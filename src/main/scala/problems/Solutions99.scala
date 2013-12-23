@@ -203,4 +203,15 @@ object Solutions99 {
     case x if x > 0 => rotate(n - 1, list.tail :+ list.head)
     case x if x < 0 => rotate(n + 1, list.last :: list.take(list.length - 1))
   }
+  
+  //P20
+  def removeAt(n: Int, list: List[Symbol]): (List[Symbol], Option[Symbol]) = {
+	  if (n < 0) (list, None)
+	  else if (list.isEmpty) (list, None)
+	  else if (n > list.length) (list, None)
+	  else {
+	    val (l, r) = list.splitAt(n)
+	    (l ::: r.tail, Some(list(n)))
+	  }
+  }
 }
