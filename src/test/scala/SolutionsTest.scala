@@ -210,5 +210,29 @@ class SolutionsTest {
   
   @Test def testP20_2() {
     assertEquals((List('b, 'c, 'd), Some('a)), removeAt(0, List('a, 'b, 'c, 'd)))
+  }  
+  
+  @Test def testP21() {
+    assertEquals(List('a, 'new, 'b, 'c, 'd), insertAt('new, 1, List('a, 'b, 'c, 'd)))
+  }
+  
+  @Test def testP21_1() {
+    assertEquals(List('new, 'a, 'b, 'c, 'd), insertAt('new, 0, List('a, 'b, 'c, 'd)))
+  }
+  
+  @Test def testP21_2() {
+    assertEquals(List('a, 'b, 'c, 'new, 'd), insertAt('new, 3, List('a, 'b, 'c, 'd)))
   }   
+  
+  @Test def testP22() {
+    assertEquals(List(4, 5, 6, 7, 8, 9), range(4, 9))
+  }
+  
+  @Test def testP22_1() {
+    assertEquals(List(4), range(4, 4))
+  }
+
+  @Test def testP22_2() {
+    assertEquals(List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), range(1, 10))
+  }  
 }

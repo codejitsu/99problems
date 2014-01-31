@@ -214,4 +214,20 @@ object Solutions99 {
 	    (l ::: r.tail, Some(list(n)))
 	  }
   }
+  
+  //P21
+  def insertAt(elem: Symbol, n: Int, list: List[Symbol]): List[Symbol] = {
+    if (list.isEmpty) list
+	else if (n < 0) list
+    else if (n > list.length) list
+    else if (n == 0) elem :: list
+    else list.head :: insertAt(elem, n - 1, list.tail)
+  }
+  
+  //P22
+  def range(left: Int, right: Int): List[Int] = (left, right) match {
+    case (_, _) if left == right => List(left)
+    case (_, _) if left > right => List()
+    case _ => left :: range(left + 1, right)
+  }
 }
