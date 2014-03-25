@@ -234,5 +234,17 @@ class SolutionsTest {
 
   @Test def testP22_2() {
     assertEquals(List(1, 2, 3, 4, 5, 6, 7, 8, 9, 10), range(1, 10))
+  }
+  
+  @Test def testP23_1() {
+    assertEquals(List(), randomSelect(0, List('a, 'b, 'c, 'd)))
+  }
+  
+  @Test def testP23_2() {
+    assertEquals(1, randomSelect(1, List('a, 'b, 'c, 'd)).length)
   }  
+  
+  @Test def testP23_3() {
+    assertEquals(1000, randomSelect(1000, List('a, 'b, 'c, 'd)).length)
+  }    
 }

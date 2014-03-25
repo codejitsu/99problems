@@ -1,6 +1,7 @@
 package problems
 
 import scala.annotation.tailrec
+import scala.util.Random
 
 object Solutions99 {
   //P01
@@ -229,5 +230,16 @@ object Solutions99 {
     case (_, _) if left == right => List(left)
     case (_, _) if left > right => List()
     case _ => left :: range(left + 1, right)
+  }
+  
+  //P23
+  def randomSelect(count: Int, list: List[Symbol]) = {
+    @tailrec
+    def randomHelper(count: Int, list: List[Symbol], acc: List[Symbol], random: Random): List[Symbol] = count match {
+      case 0 => acc
+      case _ => randomHelper(count - 1, list, list(random.nextInt(list.length)) :: acc, random)
+    }
+    
+    randomHelper(count, list, List(), new Random)
   }
 }
