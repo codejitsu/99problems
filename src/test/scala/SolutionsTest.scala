@@ -247,4 +247,42 @@ class SolutionsTest {
   @Test def testP23_3() {
     assertEquals(1000, randomSelect(1000, List('a, 'b, 'c, 'd)).length)
   }    
+  
+  @Test def testP24_1() {
+    assertEquals(10, lotto(10, 50).length)
+  }
+
+  @Test def testP24_2() {
+    assertEquals(10, lotto(10, 50).toSet.size)
+  }
+  
+  @Test def testP24_3() {
+    assertFalse(lotto(10, 50) == lotto(10, 50))
+  }
+  
+  @Test def testP24_4() {
+    assertFalse(lotto(50, 50) == lotto(50, 50))
+  }    
+
+  @Test def testP24_5() {
+    assertTrue(lotto(50, 50).length == lotto(50, 50).length)
+  }  
+  
+  @Test def testP25_1() {
+    assertEquals(randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)).length, randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)).length)
+  }
+  
+  @Test def testP25_2() {
+    val input = List('a, 'b, 'c, 'd, 'e, 'f)
+    assertFalse(randomPermute(input) == input)
+  }  
+
+  @Test def testP25_3() {
+    val input = List('a, 'b, 'c, 'd, 'e, 'f)
+    assertTrue(randomPermute(input).length == input.length)
+  }
+  
+  @Test def testP25_4() {
+    assertFalse(randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)).isEmpty)
+  }  
 }

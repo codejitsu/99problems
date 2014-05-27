@@ -242,4 +242,23 @@ object Solutions99 {
     
     randomHelper(count, list, List(), new Random)
   }
+  
+  //P24
+  def lotto(count: Int, max: Int): List[Int] = {
+    @tailrec
+    def _lotto(res: List[Int], rnd: Random): List[Int] = {
+      if (res.length == count) res
+      else {
+        val next = rnd.nextInt(max)
+        
+        if (!res.contains(next)) _lotto(res :+ next, rnd)
+        else _lotto(res, rnd)
+      }
+    }
+    
+    _lotto(List(), new Random)
+  }
+  
+  //P25
+  def randomPermute(list: List[Symbol]): List[Symbol] = randomSelect(list.size, list)
 }
