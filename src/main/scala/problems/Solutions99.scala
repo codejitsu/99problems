@@ -282,16 +282,16 @@ object Solutions99 {
   }
   
   //P27
-  def group3(people: List[String]): List[List[List[String]]] = {
+  def group3(n1:Int, n2: Int, n3: Int, people: List[String]): List[List[List[String]]] = {
     if (people.size != 9) Nil
     else {
       val peopSymbol = (0 until 9) map (i => Symbol(i.toString))
       val peopList = peopSymbol.toList
       
       val result = for {
-    	  all2 <- combinations(2, peopList)
-    	  all3 <- combinations(3, peopList)
-    	  all4 <- combinations(4, peopList)
+    	  all2 <- combinations(n1, peopList)
+    	  all3 <- combinations(n2, peopList)
+    	  all4 <- combinations(n3, peopList)
     	  
     	  if (all2.intersect(all3).size == 0 && all2.intersect(all4).size == 0 && all3.intersect(all4).size == 0)
     	    

@@ -303,15 +303,20 @@ class SolutionsTest {
   }    
   
   @Test def testP27_1() {
-    assertEquals(group3(List("A", "B", "C")), Nil)
+    assertEquals(group3(2, 3, 4, List("A", "B", "C")), Nil)
   }
   
   @Test def testP27_2() {
-    assertEquals(group3(List("A", "B", "C", "D", "E", "F", "G", "H")), Nil)
+    assertEquals(group3(2, 3, 4, List("A", "B", "C", "D", "E", "F", "G", "H")), Nil)
   }  
   
   @Test def testP27_3() {
-    assertTrue(group3(List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) contains 
+    assertTrue(group3(2, 3, 4, List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) contains 
         List(List("Aldo", "Beat"), List("Carla", "David", "Evi"), List("Flip", "Gary", "Hugo", "Ida")))
   }
+  
+  @Test def testP27_4() {
+    assertTrue(group3(2, 2, 5, List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) contains 
+        List(List("Aldo", "Beat"), List("Carla", "David"), List("Evi", "Flip", "Gary", "Hugo", "Ida")))
+  }  
 }
