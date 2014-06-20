@@ -261,4 +261,46 @@ object Solutions99 {
   
   //P25
   def randomPermute(list: List[Symbol]): List[Symbol] = randomSelect(list.size, list)
+  
+  //P26
+  def combinations(n: Int, list: List[Symbol]): List[List[Symbol]] = n match {
+    case 0 => List(Nil)  
+  	case 1 => list map { List(_) }
+    case x => {
+      val prev = combinations(x - 1, list)
+      val next = for {
+        c <- prev
+        j <- list
+        if !(c contains j)
+        s = (c :+ j).toSet
+      } yield s
+
+      val uniq = next.toSet.toList
+      val res = uniq map {_.toList}
+      res
+    }
+  }
+  
+  //P27
+  def group3(people: List[String]): List[List[List[String]]] = {
+    if (people.size != 9) Nil
+    else {
+      val peopSymbol = (0 until 9) map (i => Symbol(i.toString))
+      val peopList = peopSymbol.toList
+      
+      val result = for {
+    	  all2 <- combinations(2, peopList)
+    	  all3 <- combinations(3, peopList)
+    	  all4 <- combinations(4, peopList)
+    	  
+    	  if (all2.intersect(all3).size == 0 && all2.intersect(all4).size == 0 && all3.intersect(all4).size == 0)
+    	    
+    	  all2Str = all2 map {si => people(Integer.parseInt(si.toString.tail))}
+    	  all3Str = all3 map {si => people(Integer.parseInt(si.toString.tail))}
+    	  all4Str = all4 map {si => people(Integer.parseInt(si.toString.tail))}
+      } yield List(all2Str.sorted, all3Str.sorted, all4Str.sorted)
+
+      result
+    }
+  }
 }

@@ -285,4 +285,33 @@ class SolutionsTest {
   @Test def testP25_4() {
     assertFalse(randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)).isEmpty)
   }  
+  
+  @Test def testP26_1() {
+    assertEquals(combinations(1, List('a, 'b, 'c)).toSet, List(List('a), List('b), List('c)).toSet)
+  }
+  
+  @Test def testP26_2() {
+    assertEquals(combinations(2, List('a, 'b, 'c)).toSet, List(List('a, 'b), List('b, 'c), List('a, 'c)).toSet)
+  }
+  
+  @Test def testP26_3() {
+    assertEquals(combinations(3, List('a, 'b, 'c)).toSet, List(List('a, 'b, 'c)).toSet)
+  }
+  
+  @Test def testP26_4() {
+    assertEquals(combinations(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'l)).length, 220)
+  }    
+  
+  @Test def testP27_1() {
+    assertEquals(group3(List("A", "B", "C")), Nil)
+  }
+  
+  @Test def testP27_2() {
+    assertEquals(group3(List("A", "B", "C", "D", "E", "F", "G", "H")), Nil)
+  }  
+  
+  @Test def testP27_3() {
+    assertTrue(group3(List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) contains 
+        List(List("Aldo", "Beat"), List("Carla", "David", "Evi"), List("Flip", "Gary", "Hugo", "Ida")))
+  }
 }
