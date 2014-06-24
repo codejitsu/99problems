@@ -303,4 +303,14 @@ object Solutions99 {
       result
     }
   }
+  
+  //P28
+  def lsort(lists: List[List[Symbol]]): List[List[Symbol]] = lists match {
+    case Nil => Nil
+    case x :: Nil => lists
+    case x :: xs => {
+      val sortTail = lsort(xs)
+      if (x.length <= sortTail.head.length) x :: sortTail else sortTail.head :: lsort(x :: sortTail.tail)
+    }
+  }
 }

@@ -319,4 +319,17 @@ class SolutionsTest {
     assertTrue(group3(2, 2, 5, List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) contains 
         List(List("Aldo", "Beat"), List("Carla", "David"), List("Evi", "Flip", "Gary", "Hugo", "Ida")))
   }  
+  
+  @Test def testP28_1() {
+    assertEquals(Nil, lsort(Nil))
+  }
+  
+  @Test def testP28_2() {
+    assertEquals(List(List('a, 'b)), lsort(List(List('a, 'b))))
+  }  
+  
+  @Test def testP28_3() {
+    assertEquals(List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l)), 
+        lsort(List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))))
+  }
 }
