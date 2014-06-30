@@ -307,10 +307,29 @@ object Solutions99 {
   //P28
   def lsort(lists: List[List[Symbol]]): List[List[Symbol]] = lists match {
     case Nil => Nil
-    case x :: Nil => lists
+    case _ :: Nil => lists
     case x :: xs => {
       val sortTail = lsort(xs)
       if (x.length <= sortTail.head.length) x :: sortTail else sortTail.head :: lsort(x :: sortTail.tail)
     }
+  }
+  
+  //P28-2
+  def lsortFreq(lists: List[List[Symbol]]): List[List[Symbol]] = {
+     @tailrec
+     def _lsortFreq(accMap: Map[Int, List[List[Symbol]]], lists: List[List[Symbol]]): Map[Int, List[List[Symbol]]] = lists match {
+       case Nil => accMap
+       case x :: xs => 
+         if (!accMap.contains(x.length)) 
+    	   _lsortFreq(accMap + (x.length -> List(x)), xs)
+    	 else
+    	   _lsortFreq(accMap + (x.length -> (accMap(x.length) :+ x)), xs)
+     }
+     
+     val freqMap = _lsortFreq(Map.empty, lists)
+     
+     val freqList = freqMap.toList sortBy {_._2.length}
+     
+     freqList.foldLeft(List.empty[List[Symbol]])((li, e) => li ++ e._2)
   }
 }
